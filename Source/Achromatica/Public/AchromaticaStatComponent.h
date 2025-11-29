@@ -7,22 +7,41 @@
 #include "AchromaticaStatComponent.generated.h"
 
 
+UENUM(BlueprintType)
+enum EAuraMode : uint8
+{
+	Solar    UMETA(DisplayName = "Solar Aura"),
+	Lunar    UMETA(DisplayName = "Lunar Aura")
+};
+
+
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ACHROMATICA_API UAchromaticaStatComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
 	UAchromaticaStatComponent();
 
 protected:
-	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+public:
+	/* Core Stats - WIP  */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CustomValues|Stats")
+	float Strength = 1.f;
 
-		
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CustomValues|Stats")
+	float Vitality = 1.f;
+
+
+	// Current Aura State
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "CustomValues|Aura")
+	EAuraMode CurrentAuraMode = EAuraMode::Solar;
+
+
+	UFUNCTION(BlueprintCallable, Category = "CustomValues|Aura")
+	void ToggleAuraMode();
+
+	
 };
