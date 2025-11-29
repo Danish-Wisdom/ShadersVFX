@@ -21,5 +21,21 @@ void UAchromaticaStatComponent::BeginPlay()
 	
 }
 
+void UAchromaticaStatComponent::ToggleAuraMode()
+{
+	if (CurrentAuraMode == EAuraMode::Solar)
+	{
+		CurrentAuraMode = EAuraMode::Lunar;
+		UE_LOG(LogTemp, Warning, TEXT("Aura Switched to Lunar: Power/Defense Mode"))
+	}
+	else
+	{
+		CurrentAuraMode = EAuraMode::Solar;
+		UE_LOG(LogTemp, Warning, TEXT("Aura Switched to Solar: Speed/Combo Mode"))
+	}
+}
+
+
+
 
 

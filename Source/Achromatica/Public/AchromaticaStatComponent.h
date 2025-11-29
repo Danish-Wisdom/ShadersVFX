@@ -37,7 +37,7 @@ public:
 
 	// Current Aura State
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "CustomValues|Aura")
-	EAuraMode CurrentAuraMode = EAuraMode::Solar;
+	TEnumAsByte<EAuraMode> CurrentAuraMode = EAuraMode::Solar;
 
 
 	UFUNCTION(BlueprintCallable, Category = "CustomValues|Aura")
